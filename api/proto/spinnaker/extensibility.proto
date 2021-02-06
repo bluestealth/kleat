@@ -16,6 +16,16 @@ message Extensibility {
   map<string, Plugin> plugins = 1;
   // Map with the plugin repositories.
   map<string, Repository> repositories = 2;
+  // Deck Proxy for gate
+  DeckProxy deckProxy = 3;
+}
+
+// DeckProxy flags
+message DeckProxy {
+  // Whether gate deckproxy is enabled
+  google.protobuf.BoolValue enabled = 1;
+  // Map with the deck plugins.
+  map<string, Plugin> plugins = 2;
 }
 
 // Spinnaker plugin flags
@@ -24,6 +34,8 @@ message Plugin {
   google.protobuf.BoolValue enabled = 1;
   // Plugin version to use.
   string version = 2;
+  // Plugin configuration
+  map<string, string> config = 3;
 }
 
 // Spinnaker plugin repository flags

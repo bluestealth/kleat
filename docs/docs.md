@@ -407,10 +407,13 @@
     - [WebhookConfig](#proto.security.WebhookConfig)
   
 - [spinnaker/extensibility.proto](#spinnaker/extensibility.proto)
+    - [DeckProxy](#proto.spinnaker.DeckProxy)
+    - [DeckProxy.PluginsEntry](#proto.spinnaker.DeckProxy.PluginsEntry)
     - [Extensibility](#proto.spinnaker.Extensibility)
     - [Extensibility.PluginsEntry](#proto.spinnaker.Extensibility.PluginsEntry)
     - [Extensibility.RepositoriesEntry](#proto.spinnaker.Extensibility.RepositoriesEntry)
     - [Plugin](#proto.spinnaker.Plugin)
+    - [Plugin.ConfigEntry](#proto.spinnaker.Plugin.ConfigEntry)
     - [Repository](#proto.spinnaker.Repository)
     - [Spinnaker](#proto.spinnaker.Spinnaker)
   
@@ -6000,6 +6003,38 @@ Configuration for webhooks.
 
 
 
+<a name="proto.spinnaker.DeckProxy"></a>
+
+### DeckProxy
+DeckProxy flags
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| enabled | [google.protobuf.BoolValue](#google.protobuf.BoolValue) |  | Whether deckproxy is enabled |
+| plugins | [DeckProxy.PluginsEntry](#proto.spinnaker.DeckProxy.PluginsEntry) | repeated | Map with the spinnaker plugins. |
+
+
+
+
+
+
+<a name="proto.spinnaker.DeckProxy.PluginsEntry"></a>
+
+### DeckProxy.PluginsEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [Plugin](#proto.spinnaker.Plugin) |  |  |
+
+
+
+
+
+
 <a name="proto.spinnaker.Extensibility"></a>
 
 ### Extensibility
@@ -6010,6 +6045,7 @@ Extensibility flags
 | ----- | ---- | ----- | ----------- |
 | plugins | [Extensibility.PluginsEntry](#proto.spinnaker.Extensibility.PluginsEntry) | repeated | Map with the spinnaker plugins. |
 | repositories | [Extensibility.RepositoriesEntry](#proto.spinnaker.Extensibility.RepositoriesEntry) | repeated | Map with the plugin repositories. |
+| deckProxy | [DeckProxy](#proto.spinnaker.DeckProxy) |  | Deck Proxy for gate |
 
 
 
@@ -6058,6 +6094,23 @@ Spinnaker plugin flags
 | ----- | ---- | ----- | ----------- |
 | enabled | [google.protobuf.BoolValue](#google.protobuf.BoolValue) |  | Whether plugin is enabled. |
 | version | [string](#string) |  | Plugin version to use. |
+| config | [Plugin.ConfigEntry](#proto.spinnaker.Plugin.ConfigEntry) | repeated | Plugin configuration |
+
+
+
+
+
+
+<a name="proto.spinnaker.Plugin.ConfigEntry"></a>
+
+### Plugin.ConfigEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [string](#string) |  |  |
 
 
 
